@@ -1,0 +1,14 @@
+main{
+  background-image: url("../img/pexels-frank-cone-3573555.jpg");
+  background-size: cover;
+    min-height: 500px;
+  }
+  div .content{
+    min-height: 500px;
+    width: 70%;
+    margin: auto;
+    background-color:white ;
+  }
+  h2{
+    margin-top:0;
+  }

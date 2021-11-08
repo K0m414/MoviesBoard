@@ -6,6 +6,7 @@ import Header from './components/Header';
 import AddMovie from './views/AddMovie';
 import MovieDetail from './views/MovieDetail';
 import EditMovie from './views/EditMovie';
+import Footer from './components/Footer';
 
 function App() {
   return(
@@ -13,13 +14,13 @@ function App() {
     <BrowserRouter>
     <Header />
       <Routes >
-        <Route path="/" exact element={<Home />} />
-        <Route path="/MovieDetail" exact element={<MovieDetail />} />
-        <Route path="/AddMovie" exact element={<AddMovie />} />
-        <Route path="/EditMovie" exact elementt={<EditMovie />} />
-        {/* revoir la route pour not found */}
+        <Route path="/" element={<Home />} />
+        <Route path="/MovieDetail" element={<MovieDetail />} />
+        <Route path="/AddMovie" element={<AddMovie />} />
+        <Route path="/EditMovie" elementt={<EditMovie />} />
         <Route path="*" element={<NotFound />}/> 
       </Routes >
+      <Footer />
     </BrowserRouter>
     </div>
   )

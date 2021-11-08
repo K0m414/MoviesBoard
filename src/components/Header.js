@@ -4,18 +4,23 @@ import "./css/Header.css"
 
 function Header(){
     return(
-        <nav>
-            <ul className="navbar">
-            
-                <li>
-                    <NavLink exact to="/" activeClassName="nav-active">Accueil</NavLink>
-                </li>
-                <li>
-                    <NavLink exact to="/AddMovie" activeClassName="nav-active">Ajouter</NavLink>
-                </li> 
+        <header>
+            <h1><a href="/"> Movies Board</a></h1>
+            <nav>
+                <ul className="navbar">
+                
+                    <li>
+                        <NavLink to="/">Accueil</NavLink>
+                    </li>
+                    
+                    <li>
+                        <NavLink to="/AddMovie">Ajouter</NavLink>
+                    </li> 
 
-            </ul>
+                </ul>
         </nav>
+        </header>
+        
         
         
     )
