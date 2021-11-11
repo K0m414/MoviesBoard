@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import './css/style.css';
 import './css/home.css';
 import axios from 'axios';
 import Card from '../components/Card';
 
 const Home = () => {
     const [movieData, setMovieData] = useState([]);
-    const [errorData, setErrorMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const URL = "http://localhost:3000/movies"
 
@@ -17,8 +16,8 @@ const Home = () => {
         }, [])
 
     return (
-        <main className="main-content">
-            <div className="content" >
+        <main className="home-page">
+            <section className="content">
                 <form className="search">
                     <input type="text" className="searchTitleInput" placeholder="Recherchez des films"/>
                     <select name="filter" className="filter">
@@ -29,30 +28,20 @@ const Home = () => {
                     </select>
                     <button className="search-button">recherchez</button>
                 </form>
+                <p>{errorMessage}</p>
                 {movieData &&
-                <div className="container">
-                    <p>{errorData}</p>
-                    {/* faire du style balise p? */}
-                    {movieData.map(movie => {
-                            return(
-                                <Card movie={ movie } key={ movie.id }  />
-                            ) 
-                        }
-                    
-                    )}
-                    {movieData.map(movie => {
-                            return(
-                                <Card movie={ movie } key={ movie.id }  />
-                            ) 
-                        }
-                    
-                    )}
-                    
-                </div>
-                
-        }
-                
-            </div>
+                    <div className="card-container">
+                        
+                        {/* faire du style balise p? */}
+                        {movieData.map(movie => {
+                                return(
+                                    <Card movie={ movie } key={ movie.id }  />
+                                ) 
+                            }
+                        )} 
+                    </div>   
+                } 
+            </section>
         </main>
     );
 };

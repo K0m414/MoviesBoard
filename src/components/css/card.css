@@ -1,12 +1,11 @@
-.container { 
-  column-count: 2;
-}
-
+/* card */
 .card {
-  margin: 0 1% 2%;
+  margin: auto auto 2%;
   box-shadow: 0 6px 6px rgba(0, 0, 0, 0.3);
   transition: 200ms;
   background: #fff;
+  width: 90%;
+
 }
 
 .card a{
@@ -16,33 +15,19 @@
 .card h2 {
   text-align: center;
 }
-
-
-.card .card_body {
-  padding: 0 40px;
-  display: flex;
-  flex-flow: row;
-  margin-bottom: 25px;
+.card h3{
+  text-align: center;
+  text-transform: capitalize;
 }
-
-.card .card_body > .half {
-  box-sizing: border-box;
-  padding: 0 15px;
-  flex: 1 0 50%;
+.card img{
+  width: 100%;
 }
-
-.card .card_body .image img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-.buttons{
+.card .buttons{
   display: flex;
   justify-content: space-between;
 }
 
-.buttons button {
+.card .buttons button {
   cursor: pointer;
   border: 1px solid #555;
   padding: 14px 30px;
@@ -54,7 +39,37 @@
   transition: 200ms;
 }
 
-button:hover {
+.card button:hover {
   background: #fff;
   color: #555;
+}
+.button-plus{
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+
+  .card .card_body {
+    padding: 0;
+    display: flex;
+    flex-flow: row;
+    margin-bottom: 25px;
+  }
+
+  .card .card_body > .half {
+    box-sizing: border-box;
+    padding: 0 15px;
+    flex: 1 0 50%;
+  }
+  
+  .card .card_body .image img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .card:hover{
+      transition: all .5s cubic-bezier(.8,.5,.2,1.4);
+      box-shadow: 0px 2px 3px rgba(0,0,0,.3);
+      transform: scale(1.03);
+  }
 }

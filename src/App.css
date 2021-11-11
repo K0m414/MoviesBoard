@@ -1,38 +1,21 @@
-.App {
-  text-align: center;
+body{
+  background-color: #2F3239 ;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+main{
+  background-image: url("views/img/pexels-frank-cone-3573555.jpg");
+  background-size: cover;
+  
   }
+
+.content{
+  width: 70%;
+  margin: auto;
+  min-height: 800px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  h2{
+    margin-top:0;
   }
-  to {
-    transform: rotate(360deg);
+  a{
+    text-decoration: none;
   }
-}

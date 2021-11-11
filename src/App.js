@@ -18,7 +18,7 @@ function App() {
         <Route path="/AddMovie" element={<AddMovie />} />
         <Route path="/EditMovie" elementt={<EditMovie />} />
         <Route path="/MovieDetail/:id" element={<MovieDetail />} />
-        {/* <Route path="*" element={<NotFound />}/>  */}
+        <Route path="*" element={<NotFound />}/> 
       </Routes >
       <Footer />
     </BrowserRouter>

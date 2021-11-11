@@ -1,25 +1,25 @@
 header{
     background-color: #2F3239 ;
 }
-h1{
+header h1{
     margin: 0 auto;
     text-align: center;
     color: white;
 }
 
 
-a{ 
+header a{ 
     text-decoration: none;
     color: white;
     font-size: bold;
     
 }
-ul{
+header ul{
     display: flex;
     justify-content: flex-end;
     margin-bottom: 0;
 } 
-li{
+header li{
     list-style: none;
     padding: 1em;
 }
