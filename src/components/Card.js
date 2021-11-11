@@ -1,39 +1,52 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+import "./css/card.css"
 
-
-const Card = (props) => {
+const Card = ( { movie } )=> {
     // donnée reçu search
-     const movieData = props.movieData[0];
-    // console.log(movieData.title)
+  const movieId = movie.id;
+     //console.log(movieId)
+    
     return(
         <div className="search-result">
-            
             {
-                movieData && (
-                   
-                        <div>
-                            <h2><a href="/movieDetail">{movieData.title}</a></h2>
-                            <img src={movieData.poster} alt= {"affiche de "+movieData.title}/>
-                            <ul>
-                                <li>la date de sortie : {movieData.release_date} </li>
-                                <li>la description : {movieData.description} </li>
-                            </ul>
+                movie && (
+                    <div>
+                        <div className="card">
+                            <Link to={"/AddMovie/"+movie.id}>
+                            <div className="card_body">
+
+                                <div className="half">
+                                    <div className="featured_text">
+                                        <h2>{movie.title}</h2>
+                                    </div>
+                                    <div className="image">
+                                        <img src={movie.poster} alt= {"affiche de "+movie.title}/>
+                                    </div>
+                                </div>
+
+                                <div className="half">
+                                    <div className="release_date">
+                                        <h3>date de sortie : </h3> 
+                                        <time>{movie.release_date}</time>
+                                    </div>
+                                    <div className="description">
+                                        <h3>synopsis : </h3>
+                                        <p>{movie.description}</p>
+                                    </div> 
+                                </div>
+                            </div>
+                            </Link>
+                            
+                            <div className="buttons">
+                                <button type="button">en savoir plus</button>
+                                <button type="button">modifier</button>
+                                <button type="button">supprimer</button>
+                            </div>
                         </div>
-            
-                )
-                
+                    </div>
+                )  
             }
-            {/* <h2>{movieData.title}</h2> */}
-
-            {/* <div className="card-content">
-            <img src={eventdata.record.fields.cover.url} alt={"image de "+eventdata.record.fields.cover_alt}/>
-            <ul>
-                <li key={"date-start"+eventdata.record.id}>Débute le {EventServices.LocalDate(eventdata.record.fields.date_start)} à {EventServices.LocalHour(eventdata.record.fields.date_start)}</li>
-                <li key={"date-end"+eventdata.record.id}>Termine le {EventServices.LocalDate(eventdata.record.fields.date_end)} à {EventServices.LocalHour(eventdata.record.fields.date_end)}</li>
-                <li key={"category"+eventdata.record.id}>Catégorie : {eventdata.record.fields.category}</li>
-                <li key={"description"+eventdata.record.id}>Description : {eventdata.record.fields.lead_text}</li>
-            </ul> */}
-
         </div>
     )
     
