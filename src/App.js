@@ -1,7 +1,7 @@
 import './App.css';
 import Home from './views/Home';
 import NotFound from './views/NotFound';
-import {BrowserRouter, Routes, Route, useParams} from "react-router-dom"
+import {BrowserRouter, Routes, Route} from "react-router-dom"
 import Header from './components/Header';
 import AddMovie from './views/AddMovie';
 import MovieDetail from './views/MovieDetail';
@@ -15,9 +15,9 @@ function App() {
     <Header />
       <Routes >
         <Route path="/" element={<Home />} />
-        <Route path="/MovieDetail" element={<MovieDetail />} />
         <Route path="/AddMovie" element={<AddMovie />} />
         <Route path="/EditMovie" elementt={<EditMovie />} />
+        <Route path="/MovieDetail/:id" element={<MovieDetail />} />
         {/* <Route path="*" element={<NotFound />}/>  */}
       </Routes >
       <Footer />

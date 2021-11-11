@@ -9,7 +9,6 @@ import MoviesData from '../services/MoviesData';
 
 const AddMovie = () => {
     const[movieDataDB, setMovieDataDB] = useState([]);
-    const [errorData, setErrorMessage] = useState('');
     const [searchTitle, setSearchTitle] = useState(""); // term dans la barre de recherche
     const [searchReleaseDate, setSearchReleaseDate] = useState("");
     const [errorMessage, setErrorMessage] = useState('');
@@ -54,7 +53,7 @@ const AddMovie = () => {
         <main>
             <div className="content add-movie">
                 <div className="search">
-                    <p>{errorData}</p>{/* faire du style balise p? */}
+                    <p>{errorMessage}</p>{/* faire du style balise p? */}
                     <input onInput = {handleSearchTitle}  list="input-search" placeholder= "Rechercher un film par titre" type='search' className='searchTitleInput'/>
                     <input onInput = {handleSearchYear} type="text" className="searchDateInput" placeholder="Affinez votre recherche par année de sortie"/>
                     <datalist id="input-search">
