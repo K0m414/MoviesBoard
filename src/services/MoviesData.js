@@ -4,6 +4,7 @@ const SERVER_ENDPOINT = 'http://localhost:3000';
 
 const MoviesData = {
   // Récupérer le tableau des données depuis le serveur
+  
   fetchAll() {
     return axios
       .post(`${SERVER_ENDPOINT}/movies`)
@@ -11,14 +12,19 @@ const MoviesData = {
       .catch(errorHandler);
   },
   add(movie){
+    // const [actor, setActor] =useState([]);
+    // setActor('jonh')
+    const actor ='jonh'
+    console.log(actor)
     return axios
     .post(`${SERVER_ENDPOINT}/movies`,{
+      // id:1,
       title : movie.title,
-      category : [movie.category],
+      category : ['action'],
       release_date : movie.release_date,
       description : movie.description,
-      // actor : [{movie.actor}],
-      similar_movies : movie.similar_movies,
+      actor : [{actor}],
+      similar_movies : [{actor}],
       poster : movie.poster,
     })
     .then((response) => response.data)
@@ -26,7 +32,7 @@ const MoviesData = {
   }
 };
 // const [movieData, setMovieData] = useState([]);
-// console.log(movieData
+
 const errorHandler = (err) => {
   const {
     request: { status },

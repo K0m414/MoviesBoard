@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import Form from '../components/Form';
 import MoviesData from '../services/MoviesData';
 
+import './css/addMovie.css'
 const AddMovie = () => {
     const[movieDataDB, setMovieDataDB] = useState([]);
     const [searchTitle, setSearchTitle] = useState(""); // term dans la barre de recherche
