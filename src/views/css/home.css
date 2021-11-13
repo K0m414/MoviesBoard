@@ -67,9 +67,11 @@
 }
 @media only screen and (min-width: 992px) {
     .card-container { 
+        width: 100%;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 10px;
+        align-items: center;
     }
   } 
 

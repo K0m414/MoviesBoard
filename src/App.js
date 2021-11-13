@@ -8,6 +8,7 @@ import MovieDetail from './views/MovieDetail';
 import EditMovie from './views/EditMovie';
 import Footer from './components/Footer';
 
+
 function App() {
   return(
     <div>
@@ -16,7 +17,7 @@ function App() {
       <Routes >
         <Route path="/" element={<Home />} />
         <Route path="/AddMovie" element={<AddMovie />} />
-        <Route path="/EditMovie" elementt={<EditMovie />} />
+        <Route path="/EditMovie" element={<EditMovie />} />
         <Route path="/MovieDetail/:id" element={<MovieDetail />} />
         <Route path="*" element={<NotFound />}/> 
       </Routes >
