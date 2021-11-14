@@ -1,0 +1,42 @@
+.add-form{
+    margin:2%;
+    padding:2%;
+}
+.add-form input, .add-form textarea{
+    width: 100%;
+    padding: 10px 0;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #666;
+    color: #555;
+    font-size: 14px;
+    text-transform: uppercase;
+    outline: none;
+}
+
+.add-form .buttons button {
+    cursor: pointer;
+    border: 1px solid #555;
+    padding: 14px 30px;
+    margin:  5%;
+    border-radius: 200px;
+    color: #fff;
+    background: #555;
+    font-size: 16px;
+    transition: 200ms;
+  }
+  .add-form .buttons {
+    text-align: center;
+  }
+  
+.add-form .buttons button:hover {
+    background: #fff;
+    color: #555;
+  }
+
+@media only screen and (min-width: 992px) {
+    .add-form{
+        width: 50%;
+        margin: auto;
+    }
+    }

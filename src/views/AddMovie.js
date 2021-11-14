@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import { HashLink as Link } from 'react-router-hash-link';
 
-// import { useNavigate } from 'react-router-dom';
-import Form from '../components/Form';
+import DateServices from '../services/DateServices';
+import MovieAddForm from '../components/MovieAddForm';
 
-import './css/addMovie.css'
+import './css/AddMovie.css'
 const AddMovie = () => {
     // API
-
     const apiUrlSearch = "https://api.themoviedb.org/3/search/movie?"
     const apiURL='https://api.themoviedb.org/3/movie/'
     const apiKey = 'api_key=1ce089df7bf505c569cf9ea998195d63'
@@ -46,6 +46,7 @@ const AddMovie = () => {
         actors: actors,
         similar_movies: similarMovies,
     };
+
     // fait la recherche ddans la base de donnée
     useEffect(() =>{
         if(searchTitle !== ""){
@@ -137,32 +138,27 @@ const AddMovie = () => {
                 <input onInput = {handleSearchTitle}  list="input-search" placeholder= "Rechercher un film par titre" type='search' className='searchTitleInput'/>
                 <input onInput = {handleSearchYear} type="text" className="searchDateInput" placeholder="Affinez votre recherche par année de sortie"/>
             </section>
-            <section>
+            <section className="select">
                 <h3>Sélectionnez un film</h3>
                 <ul >
                     {movieDataDB.map((movieData)=>{
-                        // mettre image et date de sortie
-                        // console.log('https://image.tmdb.org/t/p/w342'+movieData.poster_path)
                         return(
-                            <li key={movieData.id} data-id={movieData.id}>
-                                <ul data-id={movieData.id} onClick={selectedMovie}>
-                                    <li><img data-id={movieData.id} src={'https://image.tmdb.org/t/p/w342'+movieData.poster_path} alt={movieData.title} /></li>
-                                    <li data-id={movieData.id} >{movieData.title}</li>
-                                    <li data-id={movieData.id} >{movieData.release_date}</li>
-                                </ul>   
-                            </li>
-                        //     <li key={movieData.id} data-id={movieData.id}>
-                        //     <img src={'https://image.tmdb.org/t/p/w342'+movieData.poster_path} alt={movieData.title} />
-                        //     {movieData.title}
-                        //     {movieData.release_date}   
-                        // </li>
+                            <Link to="#form">
+                                <li key={movieData.id} data-id={movieData.id}>
+                                    <ul className="select-list"data-id={movieData.id} onClick={selectedMovie}>
+                                        <li><img data-id={movieData.id} src={'https://image.tmdb.org/t/p/w342'+movieData.poster_path} alt={movieData.title} /></li>
+                                        <li data-id={movieData.id} >{movieData.title}</li>
+                                        <li data-id={movieData.id} >Sortie le {DateServices.LocalDate(movieData.release_date)}</li>
+                                    </ul>   
+                                </li>
+                            </Link>
                         ) 
                     })
                     }
                 </ul>  
             </section>
                 { data &&
-                    <Form data={data} selectMovie={selectMovie} similarMovie={similarMovies} actors={actors} />
+                    <MovieAddForm data={data} selectMovie={selectMovie} similarMovie={similarMovies} actors={actors} />
                 }
         </article>
         </main>

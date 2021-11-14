@@ -3,6 +3,8 @@ import MovieEditForm from '../components/MovieEditForm';
 import { useParams } from 'react-router';
 import axios from 'axios';
 
+import './css/EditMovie.css'
+
 function EditMovie() {
     const { id } = useParams();
     const [movie, setMovie] = useState('');
@@ -16,12 +18,16 @@ function EditMovie() {
     }, [id]);
     
     return (
-        <article>
-            {movie ? (
-                <MovieEditForm movie={movie} />
-            ): (<p>Il y a un petit problème ...</p>)}
-        </article>
+        
+        <main>
+            <article className="content edit-movie">
+                {movie ? (
+                    <MovieEditForm movie={movie} />
+                ): (<p>Il y a un petit problème ...</p>)}
+            </article>
+            
+        </main>
     )
 }
 
-export default EditMovie
+export default EditMovie;

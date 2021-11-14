@@ -22,6 +22,9 @@
 .card img{
   width: 100%;
 }
+.release_date{
+  text-align: center;
+}
 .card .buttons{
   display: flex;
   justify-content: space-between;

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import './css/home.css';
 import axios from 'axios';
 import Card from '../components/Card';
-import MovieDataService from '../services/MovieDataService';
+
+import './css/Home.css';
 
 const Home = () => {
     const [movieData, setMovieData] = useState([]);
@@ -18,15 +18,11 @@ const Home = () => {
         }, [])
         const handleClick = (e) => {
             e.preventDefault()
-                console.log('j')
-                // MovieDataService.searchMovie(title).then(response => setMovieData(response.data));
+
                 let queryParams = [];
                 if (searchTitle && searchTitle !== '') {
                     queryParams.push(`title_like=${searchTitle}`);
                 }
-                // if (category && category !== '') {
-                //     queryParams.push(`categories_like=${category}`);
-                // }
 
                 axios.get(URL+'?'+queryParams)
                 .then(response => setMovieData(response.data))

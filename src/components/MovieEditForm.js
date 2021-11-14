@@ -1,8 +1,11 @@
 import React, {useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
+
+import './css/MovieEditForm.css'
 
 const MovieEditForm = ({ movie }) => {
-    
+    const navigate =useNavigate();
     const [form, setForm] = useState({
         image: {value: movie.poster, isValid: true},
         title: {value: movie.title, isValid: true},
@@ -62,85 +65,82 @@ const MovieEditForm = ({ movie }) => {
             .then((response) => console.log(response))
             .catch((error) => console.log(error));
             };
+            navigate('/')
     }
     // console.log(movie.categories)
     return (
-        // <div></div>
 
-        <form onSubmit={(e)=>handleSubmit(e)}>
+        <form className="edit-form" onSubmit={(e)=>handleSubmit(e)}>
             
             <fieldset>
             <legend>Modifier un film</legend>
-        {/* Movie image */}
-            <div>
-                <label htmlFor="image">Image:</label>
-                <input type="text" name="image" id="image" value={form.image.value} placeholder={movie.poster} onChange={(e)=>handleInputChange(e)}></input>
-                {/* error */}
-                {form.image.error &&
-                <div className="card-panel red accent-1">
-                    {form.image.error}
-                </div>}  
-            </div>
+            {/* Movie image */}
+                
+                    <label htmlFor="image">Image:</label>
+                    <input type="text" name="image" id="image" value={form.image.value} placeholder={movie.poster} onChange={(e)=>handleInputChange(e)}></input>
+                    {/* error */}
+                    {form.image.error &&
+                    <div className="card-panel red accent-1">
+                        {form.image.error}
+                    </div>}  
+                
 
-        {/* Movie Title */}
-            <div>
-                <label htmlFor="title">Titre:</label>
-                <input type="text" name="title" id="title" value={form.title.value} placeholder={movie.title} onChange={(e)=>handleInputChange(e)}></input>
-            </div>
+            {/* Movie Title */}
+                
+                    <label htmlFor="title">Titre:</label>
+                    <input type="text" name="title" id="title" value={form.title.value} placeholder={movie.title} onChange={(e)=>handleInputChange(e)}></input>
+                
 
-        {/* Movie date */}
-            <div>
-                <label htmlFor="date">Date de sortie:</label>
-                <input id="date" type="date" name="date" value={form.date.value} onChange={(e)=>handleInputChange(e)}></input>
-            </div>
+            {/* Movie date */}
+                
+                    <label htmlFor="date">Date de sortie:</label>
+                    <input id="date" type="date" name="date" value={form.date.value} onChange={(e)=>handleInputChange(e)}></input>
+               
 
-        {/* Movie description */}
-            <div>
-                <label htmlFor="description">Description:</label>
-                <textarea type='text' name="description" value={form.description.value} placeholder={movie.description} onChange={(e)=>handleInputChange(e)}></textarea>
-            </div> 
-        {/* movie categories */}
-            <div>
-                {movie.categories.map(category => (
-                    <div>
-                        <label htmlFor={"category-"+category}>Catégories:</label>
-                        <input type="text" name={"category-"+category} defaultValue={category} onChange={(e)=>handleInputChange(e)} ></input>
-                    </div>
+            {/* Movie description */}
+                
+                    <label htmlFor="description">Description:</label>
+                    <textarea type='text' name="description" value={form.description.value} placeholder={movie.description} onChange={(e)=>handleInputChange(e)}></textarea>
+                
+            {/* movie categories */}
+                
+                    {movie.categories.map(category => (
+                        <div>
+                            <label htmlFor={"category-"+category}>Catégories:</label>
+                            <input type="text" name={"category-"+category} defaultValue={category} onChange={(e)=>handleInputChange(e)} ></input>
+                        </div>
+                        
+                    ))}
+                
+            {/* movie actors */}
+                
+                    {form.actors.value.map(actor => (
+                        <div>
+                            <label htmlFor="name">Nom:</label>
+                            <input type="text" name="name" id="name" defaultValue={actor.character} onChange={(e)=>handleInputChange(e)} ></input>
+                            <label htmlFor="character">Rôle:</label>
+                            <input type="text" name="character" id="character" defaultValue={actor.name} onChange={(e)=>handleInputChange(e)} ></input>
+                            <label htmlFor="image-link">Lien de l'image :</label>
+                            <input type="text" name="image-link" id="image-link" defaultValue={actor.photo} onChange={(e)=>handleInputChange(e)} ></input>
+                        </div>
+                    ))}
+            {/* movie similaire */}
+                    {form.similar_movies.value.map(sm => (
+                        <div>
+                            <label htmlFor="title">Titre : </label>
+                            <input type="text" name="title" id="title" defaultValue={sm.title} placeholder={sm.title} onChange={(e)=>handleInputChange(e)} ></input>
+                            <label htmlFor="image-link">Lien de l'image : </label>
+                            <input type="text" name="image-link" id="image-link" defaultValue={sm.poster} onChange={(e)=>handleInputChange(e)} ></input>
+                            <label htmlFor="date">Date de sortie : </label>
+                            <input id="date" type="date" name="date" defaultValue={sm.release_date} onChange={(e)=>handleInputChange(e)} ></input>
+                        </div>
+                    ))}
                     
-                ))}
-            </div>
-        {/* movie actors */}
-            <div>
-                {form.actors.value.map(actor => (
-                    <div>
-                        <label htmlFor="name">Nom:</label>
-                        <input type="text" name="name" id="name" defaultValue={actor.character} onChange={(e)=>handleInputChange(e)} ></input>
-                        <label htmlFor="character">Rôle:</label>
-                        <input type="text" name="character" id="character" defaultValue={actor.name} onChange={(e)=>handleInputChange(e)} ></input>
-                        <label htmlFor="image-link">Lien de l'image :</label>
-                        <input type="text" name="image-link" id="image-link" defaultValue={actor.photo} onChange={(e)=>handleInputChange(e)} ></input>
-                    </div>
-                ))}
-            </div>
-        {/* movie similaire */}
-            <div>
-                {form.similar_movies.value.map(sm => (
-                    <div>
-                        <label htmlFor="title">Titre : </label>
-                        <input type="text" name="title" id="title" defaultValue={sm.title} placeholder={sm.title} onChange={(e)=>handleInputChange(e)} ></input>
-                        <label htmlFor="image-link">Lien de l'image : </label>
-                        <input type="text" name="image-link" id="image-link" defaultValue={sm.poster} onChange={(e)=>handleInputChange(e)} ></input>
-                        <label htmlFor="date">Date de sortie : </label>
-                        <input id="date" type="date" name="date" defaultValue={sm.release_date} onChange={(e)=>handleInputChange(e)} ></input>
-                    </div>
-                ))}
-            </div>
-
-        <div className="buttons">
-            {/* Submit button */}
-            <button type="submit">Modifier</button>
-        </div>
-        </fieldset>
+                <div className="buttons">
+                    {/* Submit button */}
+                    <button type="submit">Modifier</button>
+                </div>
+            </fieldset>
         </form>   
     )
 }

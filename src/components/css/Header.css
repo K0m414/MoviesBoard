@@ -1,25 +1,31 @@
 header{
+    flex-direction: column;
     background-color: #2F3239 ;
+    display: block;
+    width: 100%;
 }
 header h1{
     margin: 0 auto;
     text-align: center;
     color: white;
+    display: inline-block;
+    width: 100%;
 }
-
 
 header a{ 
     text-decoration: none;
     color: white;
     font-size: bold;
-    
 }
+
 header ul{
+    padding: 0;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     margin-bottom: 0;
 } 
 header li{
     list-style: none;
     padding: 1em;
 }
+

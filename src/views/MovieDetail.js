@@ -2,7 +2,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import NotFound from './NotFound';
-import './css/movieDetail.css'
+
+import DateServices from '../services/DateServices';
+import './css/MovieDetail.css'
 
 
 const MovieDetail = () => {
@@ -29,7 +31,7 @@ const MovieDetail = () => {
                         <section className="poster">
                             <h2>{ movieData.title }</h2>
                             <img src={ movieData.poster } alt={`Affiche du film ${movieData.title}`} />
-                            <p>Date de sortie : <time>{movieData.release_date}</time></p>
+                            <p>Date de sortie : <time>{DateServices.LocalDate(movieData.release_date)}</time></p>
                         </section>
 
                         <section>

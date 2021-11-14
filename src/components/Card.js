@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React from 'react'
 import { Link } from 'react-router-dom';
-import MovieDataService from '../services/MovieDataService';
-import "./css/card.css"
+
+import DateServices from '../services/DateServices';
+import "./css/Card.css"
 
 const Card = ( { movie } )=> {
     
@@ -33,7 +34,7 @@ const Card = ( { movie } )=> {
                         <div className="half">
                             <div className="release_date">
                                 <h3>date de sortie : </h3> 
-                                <time>{movie.release_date}</time>
+                                <time>{DateServices.LocalDate(movie.release_date)}</time>
                             </div>
                             <div className="description">
                                 <h3>synopsis : </h3>

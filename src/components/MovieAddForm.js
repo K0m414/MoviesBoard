@@ -1,13 +1,15 @@
 import axios from 'axios';
 import React from 'react';
+import { useNavigate } from 'react-router';
 
-
-const Form = (props) => {
+import './css/MovieAddForm.css'
+const MovieAddForm = (props) => {
   
   const data = props.data;
   const actors = data.actors
   const similarMovie = data.similar_movies
 
+  const navigate =useNavigate();
   //donnée récupérer du formulaire
 //   const [formData, setFormData] = useState({
 //     title: data.title,
@@ -24,9 +26,9 @@ const Form = (props) => {
 
 // max 4 de actors / similar_movies
   const actorsLength = actors.length - 4;
-  actors.splice(4, actorsLength );
+  actors.splice(6, actorsLength );
   const similarMovieLength = similarMovie.length - 4;
-  similarMovie.splice(4, similarMovieLength );
+  similarMovie.splice(6, similarMovieLength );
   
   //event
     const handleSubmit = (e) => {
@@ -35,6 +37,7 @@ const Form = (props) => {
         axios.post("http://localhost:3000/movies", data)
             .then((response) => console.log(response))
             .catch((error) => console.log(error));
+            navigate('/')
     };
 
     const handleInput = (e) => {
@@ -48,7 +51,7 @@ const Form = (props) => {
     }
 
   return (
-  <form onSubmit={handleSubmit}>
+  <form id="form" className="add-form" onSubmit={handleSubmit}>
 
     <fieldset>
       <legend>Formulaire d'ajout</legend>
@@ -136,4 +139,4 @@ const Form = (props) => {
   );
 };
 
-export default Form;
+export default MovieAddForm;
