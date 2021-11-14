@@ -5,7 +5,7 @@
   transition: 200ms;
   background: #fff;
   width: 90%;
-
+  background-attachment: fixed;
 }
 
 .card a{
@@ -74,5 +74,8 @@
       transition: all .5s cubic-bezier(.8,.5,.2,1.4);
       box-shadow: 0px 2px 3px rgba(0,0,0,.3);
       transform: scale(1.03);
+  }
+  .button-plus{
+    display: block;
   }
 }

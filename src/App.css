@@ -4,7 +4,8 @@ body{
 main{
   background-image: url("views/img/pexels-frank-cone-3573555.jpg");
   background-size: cover;
-  
+  background-attachment: fixed;
+  background-repeat: no-repeat ;
   }
 
 .content{

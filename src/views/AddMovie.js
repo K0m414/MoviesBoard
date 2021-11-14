@@ -87,7 +87,7 @@ const AddMovie = () => {
                 return newCast;
             })
             setActors(casts);
-            console.log(response.data.cast);
+            // console.log(response.data.cast);
         })
         .catch((error) => console.log(error));
 
@@ -124,8 +124,9 @@ const AddMovie = () => {
 
     const selectedMovie = (e) => {
         setId(e.target.dataset.id)
-        console.log(id)
+        console.log(e.target.dataset.id)
     };
+    // console.log(id)
 
     return (
         <main>
@@ -141,8 +142,20 @@ const AddMovie = () => {
                 <ul >
                     {movieDataDB.map((movieData)=>{
                         // mettre image et date de sortie
+                        // console.log('https://image.tmdb.org/t/p/w342'+movieData.poster_path)
                         return(
-                            <li onClick={selectedMovie} key={movieData.id} data-id={movieData.id}>{movieData.title}</li>
+                            <li key={movieData.id} data-id={movieData.id}>
+                                <ul data-id={movieData.id} onClick={selectedMovie}>
+                                    <li><img data-id={movieData.id} src={'https://image.tmdb.org/t/p/w342'+movieData.poster_path} alt={movieData.title} /></li>
+                                    <li data-id={movieData.id} >{movieData.title}</li>
+                                    <li data-id={movieData.id} >{movieData.release_date}</li>
+                                </ul>   
+                            </li>
+                        //     <li key={movieData.id} data-id={movieData.id}>
+                        //     <img src={'https://image.tmdb.org/t/p/w342'+movieData.poster_path} alt={movieData.title} />
+                        //     {movieData.title}
+                        //     {movieData.release_date}   
+                        // </li>
                         ) 
                     })
                     }

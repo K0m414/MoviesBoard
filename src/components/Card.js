@@ -1,11 +1,19 @@
+import axios from 'axios';
 import React from 'react'
 import { Link } from 'react-router-dom';
+import MovieDataService from '../services/MovieDataService';
 import "./css/card.css"
 
 const Card = ( { movie } )=> {
-    //const movieId = movie.id;
-     //console.log(movieId)
     
+     const handleDeleteMovie = (e) => {
+         const movieId = e.target.dataset.id;
+         console.log(movieId)
+         axios.delete("http://localhost:3000/movies/"+movieId)
+        .then(response => response.data)
+        .catch(error => console.log(error))
+    }
+
     return(
         <article className="card-list">
             {movie && (
@@ -17,7 +25,7 @@ const Card = ( { movie } )=> {
                             <div className="featured_text">
                                 <h2>{movie.title}</h2>
                             </div>
-                            <div className="poster">
+                            <div>
                                 <img src={movie.poster} alt= {"affiche de "+movie.title}/>
                             </div>
                         </div>
@@ -37,8 +45,12 @@ const Card = ( { movie } )=> {
                     
                     <div className="buttons">
                         <button type="button" className="button-plus">en savoir plus</button>
-                        <button type="button">modifier</button>
-                        <button type="button">supprimer</button>
+                        <Link to={"/EditMovie/"+movie.id}>
+                            <button type="button">modifier</button>
+                        </Link>
+                        <Link to={"/"}>
+                            <button data-id={movie.id} onClick={handleDeleteMovie} type="button">supprimer</button>
+                        </Link>
                     </div>
                 </div>
             )}
