@@ -15,10 +15,10 @@ const Home = () => {
         axios.get(URL)// recupere données de l'api
         .then((response) =>setMovieData(response.data))
             .catch((err) => setErrorMessage('Erreur serveur : Impossible de récupérer les films'));
-        }, [movieData])
+        }, []) //movieData fait appel a chaque fois que cette donnée change
+
         const handleClick = (e) => {
             e.preventDefault()
-
                 let queryParams = [];
                 if (searchTitle && searchTitle !== '') {
                     queryParams.push(`title_like=${searchTitle}`);
