@@ -15,7 +15,7 @@ const Home = () => {
         axios.get(URL)// recupere données de l'api
         .then((response) =>setMovieData(response.data))
             .catch((err) => setErrorMessage('Erreur serveur : Impossible de récupérer les films'));
-        }, [])
+        }, [movieData])
         const handleClick = (e) => {
             e.preventDefault()
 
@@ -49,7 +49,10 @@ const Home = () => {
                     <button onClick={handleClick} className="search-button">recherchez</button>
                 </form>
                 {/* faire du style balise p? */}
-                <p>{errorMessage}</p>
+                {errorMessage &&
+                    <p className="error-server">{errorMessage}</p>
+                }
+                
                 {movieData &&
                     <div className="card-container">
                         

@@ -34,6 +34,13 @@
     color: #555;
 }
 
+.error-server{
+    color: red;
+    height: 100vh;
+    padding: 1%;
+    background-color: white;
+    text-align: center;
+}
 @media only screen and (min-width: 768px) {
     /*form*/ 
     .searchTitleInput{

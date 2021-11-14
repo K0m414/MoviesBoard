@@ -1,11 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-import NotFound from './NotFound';
+import { Link } from 'react-router-dom';
 
 import DateServices from '../services/DateServices';
-import './css/MovieDetail.css'
+import DeleteMovie from '../components/DeleteMovie';
+import NotFound from './NotFound';
 
+import './css/MovieDetail.css'
 
 const MovieDetail = () => {
     const[movieData, setMovieData] = useState([]);
@@ -28,13 +30,13 @@ const MovieDetail = () => {
                 {movieData.length === undefined && (
                     <article className="detail-movie">
                         
-                        <section className="poster">
+                        <section className="main-detail">
                             <h2>{ movieData.title }</h2>
                             <img src={ movieData.poster } alt={`Affiche du film ${movieData.title}`} />
                             <p>Date de sortie : <time>{DateServices.LocalDate(movieData.release_date)}</time></p>
                         </section>
 
-                        <section>
+                        <section className="secondary-detail">
                         <h3>Catégories : </h3>
                         <ul className="categories-list"> 
                             { movieData.categories.map(( category, index) =>
@@ -77,8 +79,10 @@ const MovieDetail = () => {
                         </ul>
                         <div>
                             <div className="buttons">
-                                <button type="button">Modifier</button>
-                                <button type="button">Supprimer</button>
+                                <Link to={"/EditMovie/"+id}>
+                                    <button type="button">modifier</button>
+                                </Link>
+                                <DeleteMovie id={id}/>
                             </div>
                         </div>    
                         </section>

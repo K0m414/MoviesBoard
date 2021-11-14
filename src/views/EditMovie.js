@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import axios from 'axios';
 
 import './css/EditMovie.css'
+import NotFound from './NotFound';
 
 function EditMovie() {
     const { id } = useParams();
@@ -14,7 +15,7 @@ function EditMovie() {
         axios.get(`http://localhost:3000/movies/${id}`)
             .then((response) => setMovie(response.data))
             .catch(error => console.log(error))
-            console.log(movie)
+            // console.log(movie)
     }, [id]);
     
     return (
@@ -23,7 +24,7 @@ function EditMovie() {
             <article className="content edit-movie">
                 {movie ? (
                     <MovieEditForm movie={movie} />
-                ): (<p>Il y a un petit problème ...</p>)}
+                ): (<NotFound />)}
             </article>
             
         </main>
