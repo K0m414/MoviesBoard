@@ -12,7 +12,7 @@
     padding: 0;
   } 
 .categories-list li{
-    list-style: none;
+    list-style-type: none;
     padding: 0;
 }
 .poster{
